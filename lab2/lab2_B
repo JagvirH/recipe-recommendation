@@ -1,0 +1,19 @@
+from bs4 import BeautifulSoup
+
+text = '''
+<div class = 'Supermarkets'>
+<a href="https://www.tesco.com">Tesco, UK</a>
+<a href="https://www.lidl.co.uk">Lidl, UK</a>
+<a href="https://www.asda.com/">Asda, UK</a>
+<a href="https://groceries.morrisons.com/webshop/startWebshop.do">Morrisons</a>
+<a href="https://www.aldi.co.uk">Aldi, UK</a>
+<a href="https://www.coop.co.uk">Coop, UK</a>
+<a href="https://www.waitrose.com">Waitrose</a>
+</div>
+'''
+soup = BeautifulSoup(text, 'html.parser')
+item = soup.find(class_='Supermarkets')
+list_items = item.find_all('a')
+
+for each in list_items:
+    print(each.contents[0])
